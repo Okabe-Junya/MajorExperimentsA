@@ -7,8 +7,9 @@ def parse_input(input_file):
         r = []
         n, m, opt = [float(x) for x in f.readline().split()]
         n, m = int(n), int(m)
+        p = [float(x) for x in f.readline().split()]
         for _ in range(int(m)):
-            r_tmp = [float(x) for x in f.readline().split()]
-            r.append(r_tmp)
+            r_input = [float(x) for x in f.readline().split()]
+            r.append(r_input)
         b = [int(x) for x in f.readline().split()]
-    return n, m, opt, r, b
+    return n, m, opt, p, r, b
