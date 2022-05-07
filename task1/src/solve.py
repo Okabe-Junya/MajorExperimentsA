@@ -1,7 +1,7 @@
 import gurobipy as gp
 
 
-def solve(n: int, array: list):
+def solve(n: int, array: list) -> bool:
     # モデルの作成
     model = gp.Model("solve_bomber_puzzle")
 
@@ -36,3 +36,6 @@ def solve(n: int, array: list):
 
     # 最適化の実行
     model.optimize()
+    
+    # 結果の出力
+    return(model.Status == gp.GRB.OPTIMAL)
