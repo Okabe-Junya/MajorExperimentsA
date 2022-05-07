@@ -56,3 +56,22 @@ $$
 ここでは，Pythonおよびgurobiを用いて，最適化問題を解くプログラムを実装する．
 
 TODO: 実装の方針を記述する
+
+## 実行方法
+
+gurobi のライセンスの取得を行い，gurobipy の動作するPython環境を用意する．テストモジュールを実行するために，ターミナル上で
+
+```
+% git clone https://github.com/Okabe-Junya/MajorExperimentsA
+% python3 ./MajorExperimentsA/task1/src/test.py
+
+```
+
+を実行する．`assertion error` や標準エラーががでないことを確認した上で，
+
+
+```
+% python3 ./MajorExperimentsA/task1/src/main.py sys.argv[1]
+```
+
+を実行する．これにより実行可能解が存在するか否かを判定する．ただし，`sys.argv[1]` には盤面の大きさを指定する．
