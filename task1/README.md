@@ -10,9 +10,7 @@
 
 ![ボンバーパズルのイメージ図](./draft/fig/bomber_puzzle.svg)
 
-## 変数の定義
-
-TODO: GitHub上でMD形式の数式を表示できるようにする．
+## 変数の定義．
 
 正の整数 $n$ を1辺のマス目の数とし，$(n + 2)\times (n + 2)$ の盤面 $A$ を考える．
 
@@ -42,9 +40,11 @@ $$
 ### 目的関数
 
 この問題は制約条件を満たす実行可能解が存在するかを判別すればよい．すなわち目的関数は例えば
+
 $$
-\text{minimize}\  1
+\text{minimize}\,  1
 $$
+
 とでもしておけば良い．
 
 ## 解の導出
@@ -55,8 +55,6 @@ $$
 
 ここでは，Pythonおよびgurobiを用いて，最適化問題を解くプログラムを実装する．
 
-TODO: 実装の方針を記述する
-
 ## 実行方法
 
 gurobi のライセンスの取得を行い，gurobipy の動作するPython環境を用意する．テストモジュールを実行するために，ターミナル上で
@@ -64,7 +62,6 @@ gurobi のライセンスの取得を行い，gurobipy の動作するPython環�
 ```
 % git clone https://github.com/Okabe-Junya/MajorExperimentsA
 % python3 ./MajorExperimentsA/task1/src/test.py
-
 ```
 
 を実行する．`assertion error` や標準エラーががでないことを確認した上で，
