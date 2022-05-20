@@ -1,7 +1,27 @@
 import sys
 import time
+from collections import deque
+import pulp
 
 from input import parse_input
+
+
+def liner_programing(n, m, p, r, b):
+    prob = pulp.LpProblem("linear_relaxation", pulp.LpMaximize)
+    # 変数の定義
+    xj = [pulp.LpVariable("x{}".format(j), lowBound=0,
+                          upBound=1, cat='Integer') for j in range(n)]
+    
+    # 目的関数の設定
+    prob += pulp.lpDot(p, xj)
+    
+    # 制約条件の設定
+    for i in range(n):
+        prob += pulp.lpDot(r[i], xj) <= b[i]
+    
+    # 最適化問題を解く
+    status = prob.solve()
+    return prob.objective.value()
 
 
 def branch_and_bound(n, m, p, r, b):
