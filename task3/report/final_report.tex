@@ -1,0 +1,53 @@
+\documentclass[a4j, dvipdfmx]{jsarticle}
+
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{color}
+\usepackage{amsmath, amssymb}  % Extend math
+\usepackage{bm}
+\usepackage{float}  % Improved interface for floating objects
+\usepackage{multirow}  % Create complex table
+\usepackage{url}  % Display URL
+\usepackage{subcaption}  % Use subcaption
+\usepackage{tabularx}  % Newline in table cell
+
+\usepackage[final]{listings}
+
+\lstset{
+  language=python,
+  basicstyle=\ttfamily\scriptsize,
+  commentstyle={\ttfamily \color[cmyk]{0,1,1,0}},
+  keywordstyle={\bfseries \color[cmyk]{1,1,0,0}},
+  stringstyle={\ttfamily \color[cmyk]{1,0,1,0.5}},
+  stepnumber=1,
+  numberstyle=\ttfamily,
+  breaklines=true,
+  breakindent=20pt,
+  frame=tblr,
+  framesep=4pt,
+  tabsize=2
+}
+
+\newcommand{\figref}[1]{Fig.\ref{#1}}
+\newcommand{\tabref}[1]{Table.\ref{#1}}
+\newcommand{\secref}[1]{\ref{#1}節}
+\renewcommand{\figurename}{Fig.}
+\renewcommand{\tablename}{Table.}
+
+
+\title{主専攻実験A 最終レポート}
+\author{岡部 純弥}
+\date{\today}
+\begin{document}
+\maketitle
+\begin{abstract}
+  
+\end{abstract}
+\section{hogeとは}
+\subsection{}
+\section{定式化}
+\subsection{変数の定義}
+\subsection{最適化問題の定式化}
+\section{計算機実験}
+\section{考察}
+\section{まとめ}
+\end{document}
