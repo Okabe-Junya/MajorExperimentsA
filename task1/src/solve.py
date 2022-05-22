@@ -2,6 +2,16 @@ import gurobipy as gp
 
 
 def solve(n: int, array: list) -> bool:
+    """solve the bomber problem
+
+    Args:
+        n (int): number of squares on the board
+        array (list): list of bomb numbers
+
+    Returns:
+        bool: True if feasible solution exists else False
+    """
+    
     # モデルの作成
     model = gp.Model("solve_bomber_puzzle")
 
