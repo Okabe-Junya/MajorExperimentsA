@@ -1,5 +1,5 @@
 def greedy(n, m, p, r, b):
-    """solve the problem with the greedy algorithm
+    """solve the problem with the greedy algorithm (Not always the optimal solution)
 
     Args:
         n (int): number of items
