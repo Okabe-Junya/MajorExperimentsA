@@ -7,6 +7,7 @@ def main():
     fname = sys.argv[1]
     n, m, opt, p, r, b = parse_input(fname)
     res = greedy(n, m, p, r, b)
+    assert res <= opt
     print(res, opt)
 
 
