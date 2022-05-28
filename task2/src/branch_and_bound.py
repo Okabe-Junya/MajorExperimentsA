@@ -3,25 +3,30 @@ import time
 from collections import deque
 import pulp
 
-from input import parse_input
+from lib.input import parse_input
+from lib.greedy import greedy
 
 
-def liner_programing(n, m, p, r, b):
-    prob = pulp.LpProblem("linear_relaxation", pulp.LpMaximize)
+def liner(n, m, p, r, b):
+    prob = pulp.LpProblem("linear_relaxation", sense=pulp.LpMaximize)
     # 変数の定義
     xj = [pulp.LpVariable("x{}".format(j), lowBound=0,
-                          upBound=1, cat='Integer') for j in range(n)]
-    
+                          upBound=1) for j in range(n)]
+
     # 目的関数の設定
     prob += pulp.lpDot(p, xj)
-    
+
     # 制約条件の設定
     for i in range(n):
         prob += pulp.lpDot(r[i], xj) <= b[i]
-    
+
+    #print(prob)
     # 最適化問題を解く
-    status = prob.solve()
-    return prob.objective.value()
+    prob.solve()
+    if prob.status:
+        return prob.objective.value()
+    else:
+        return 0
 
 
 def branch_and_bound(n, m, p, r, b):
@@ -38,8 +43,14 @@ def branch_and_bound(n, m, p, r, b):
         int: the maximum price under the restrictions
     """
 
-    opt = 0
-    return opt
+    init_opt = greedy(n, m, p, r, b.copy())
+    part_prob = deque()
+    part_prob.append((n, m, p, r, b))
+    while part_prob:
+        # TODO: 部分問題を取り出し，分枝限定の実装を行う
+        tmp_prob = part_prob.popleft()
+        res = liner(*tmp_prob)
+    return res
 
 
 def main():
@@ -49,8 +60,8 @@ def main():
     res = branch_and_bound(n, m, p, r, b)
     time_end = time.time()
 
-    assert res == opt
-    print("Minimum price:", res)
+    # assert res == opt
+    print("Max price:", res)
     print("Time: {:.3f}sec".format(time_end - time_start))
 
 

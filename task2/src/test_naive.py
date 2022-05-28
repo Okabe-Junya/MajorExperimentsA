@@ -2,7 +2,6 @@ import sys
 import time
 
 from input import parse_input
-from lib.greedy import greedy
 from lib.naive import naive
 
 def main():
@@ -16,5 +15,6 @@ def main():
     print("Minimum price:", res)
     print("Time: {:.3f}sec".format(time_end - time_start))
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     main()
