@@ -19,8 +19,5 @@ def main():
         res = solve(N, array)
         assert res
 
-    # test_case3
-    # TODO: 解が存在しない場合のテストケースを追加する
-
 if __name__ == "__main__":
     main()
