@@ -1,6 +1,5 @@
+from branch_and_bound import branch_and_bound
 from lib.input import parse_input
-from lib.naive import naive
-
 
 def test():
     for i in range(1, 8):
