@@ -1,7 +1,7 @@
 import sys
 import time
 
-from input import parse_input
+from lib.input import parse_input
 from lib.naive import naive
 
 def main():
