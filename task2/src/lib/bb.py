@@ -68,6 +68,8 @@ def branch_and_bound(n, m, p, r, b):
     """
     r_init = r.copy()
     b_init = b.copy()
+    DEBUG = True
+    
     tmp_opt = greedy(n, m, p, r, b.copy())
     item_flag = [-1] * n
     ans_list = []
