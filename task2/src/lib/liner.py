@@ -6,12 +6,10 @@ def liner_with_solver(n, m, p, r, b):
     # 変数の定義
     xj = [pulp.LpVariable("x{}".format(j), lowBound=0,
                           upBound=1) for j in range(n)]
-
     # 目的関数の設定
     prob += pulp.lpDot(p, xj)
-
     # 制約条件の設定
-    for i in range(n):
+    for i in range(m):
         prob += pulp.lpDot(r[i], xj) <= b[i]
 
     # print(prob)
