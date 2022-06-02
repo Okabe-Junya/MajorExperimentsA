@@ -1,3 +1,5 @@
+import time
+
 def naive(n, m, p, r, b):
     """solve the problem with the naive full bit search
 
@@ -12,7 +14,12 @@ def naive(n, m, p, r, b):
         int: the maximum price under the restrictions
     """
     executable_solution = []
+    start_time = time.time()
     for num in range(2 ** n):
+        tmp_time = time.time()
+        if tmp_time - start_time > 2.0:
+            return -1 # timeout
+
         choice = []
         check = [0] * m
         bin_num = str(bin(num)[2:]).zfill(n)
