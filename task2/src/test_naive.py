@@ -1,3 +1,6 @@
+import sys
+import time
+
 from lib.input import parse_input
 from lib.naive import naive
 
