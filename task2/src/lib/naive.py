@@ -17,7 +17,7 @@ def naive(n, m, p, r, b):
     start_time = time.time()
     for num in range(2 ** n):
         tmp_time = time.time()
-        if tmp_time - start_time > 2.0:
+        if tmp_time - start_time > 10.0:
             return -1 # timeout
 
         choice = []
