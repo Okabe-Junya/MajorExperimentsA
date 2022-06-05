@@ -4,8 +4,8 @@ from collections import deque
 
 from lib.input import parse_input
 from lib.greedy import greedy
-from lib.liner import liner_with_solver, liner_with_simplex
-
+from lib.liner import liner_with_solver
+from lib.simplex import simplex
 
 def make_subtree_problem(n, m, p, r, b, item_flag):
     """make two subtree problems
@@ -70,12 +70,17 @@ def branch_and_bound(n, m, p, r, b):
     b_init = b.copy()
     DEBUG = True
     
+    start_time = time.time()
     tmp_opt = greedy(n, m, p, r, b.copy())
     item_flag = [-1] * n
     ans_list = []
     part_prob = deque()
     part_prob.append((n, m, p, r, b, item_flag))
     while part_prob:
+        tmp_time = time.time()
+        if tmp_time - start_time > 10.0:
+            return -1 # timeout
+        
         tmp_prob = part_prob.popleft()
         if -1 not in tmp_prob[-1]:
             if check_subject(r_init, b_init, tmp_prob[-1]):
@@ -85,7 +90,7 @@ def branch_and_bound(n, m, p, r, b):
             if res is None:
                 continue
         else:
-            res = liner_with_simplex(*tmp_prob[:-1])
+            res = simplex(*tmp_prob[:-1])
         tmp_sum = 0
         for i in range(n):
             if tmp_prob[-1][i] == 1:

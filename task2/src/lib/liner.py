@@ -19,7 +19,3 @@ def liner_with_solver(n, m, p, r, b):
         return prob.objective.value()
     else:
         return 0
-
-
-def liner_with_simplex(n, m, p, r, b):
-    pass
