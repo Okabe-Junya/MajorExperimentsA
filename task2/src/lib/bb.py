@@ -55,7 +55,6 @@ def check_subject(r, b, x):
 
 
 def branch_and_bound(n, m, p, r, b):
-    cnt = 0
     """solve the problem with the branch and bound algorithm
 
     Args:
@@ -85,23 +84,24 @@ def branch_and_bound(n, m, p, r, b):
     part_prob.append((n, m, p, r_init, b_init, item_flag))
     while part_prob:
         tmp_time = time.time()
-        if tmp_time - start_time > 10.0:
+        if tmp_time - start_time > 30.0:
             raise TimeoutError(
                 "A timeout occurs because a single test case took more than 10 seconds"
             )
 
-        tmp_prob = part_prob.popleft()
+        tmp_prob = part_prob.pop()
         if -1 not in tmp_prob[-1]:
             if check_subject(r_init, b_init, tmp_prob[-1]):
                 ans_list.append(tmp_prob[-1])
                 tmp_opt = max(tmp_opt, sum(p[i] * tmp_prob[-1][i] for i in range(n)))
-                # print(tmp_opt)
         if DEBUG:
             res = liner_with_solver(*tmp_prob[:-1])
             if res is None:
                 continue
         else:
             res = simplex(*tmp_prob[:-1])
+            if res is None:
+                continue
         tmp_sum = 0
         for i in range(n):
             if tmp_prob[-1][i] == 1:
