@@ -1,4 +1,4 @@
-from branch_and_bound import branch_and_bound
+from lib.bb import branch_and_bound
 from lib.input import parse_input
 
 def test():

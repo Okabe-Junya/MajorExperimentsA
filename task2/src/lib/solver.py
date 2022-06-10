@@ -1,8 +1,6 @@
 import sys
 
-
 import gurobipy as gp
-
 
 from lib.input import parse_input
 

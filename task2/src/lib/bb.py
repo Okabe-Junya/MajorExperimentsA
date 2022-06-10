@@ -7,6 +7,7 @@ from lib.greedy import greedy
 from lib.liner import liner_with_solver
 from lib.simplex import simplex
 
+
 def make_subtree_problem(n, m, p, r, b, item_flag):
     """make two subtree problems
 
@@ -47,7 +48,7 @@ def check_subject(r, b, x):
     for i in range(len(r)):
         tmp_sum = 0
         for j in range(len(r[i])):
-            tmp_sum +=  r[i][j] * x[j]
+            tmp_sum += r[i][j] * x[j]
         if tmp_sum > b[i]:
             return False
     return True
@@ -69,7 +70,7 @@ def branch_and_bound(n, m, p, r, b):
     r_init = r.copy()
     b_init = b.copy()
     DEBUG = True
-    
+
     start_time = time.time()
     tmp_opt = greedy(n, m, p, r, b.copy())
     item_flag = [-1] * n
@@ -79,8 +80,10 @@ def branch_and_bound(n, m, p, r, b):
     while part_prob:
         tmp_time = time.time()
         if tmp_time - start_time > 10.0:
-            return -1 # timeout
-        
+            raise TimeoutError(
+                "A timeout occurs because a single test case took more than 10 seconds"
+            )
+
         tmp_prob = part_prob.popleft()
         if -1 not in tmp_prob[-1]:
             if check_subject(r_init, b_init, tmp_prob[-1]):
@@ -123,7 +126,7 @@ def main():
     res = branch_and_bound(n, m, p, r, b)
     time_end = time.time()
 
-    # assert res == opt
+    assert res == opt
     print("Max price:", res)
     print("Time: {:.3f}sec".format(time_end - time_start))
 

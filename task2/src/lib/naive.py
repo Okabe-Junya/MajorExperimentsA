@@ -1,5 +1,6 @@
 import time
 
+
 def naive(n, m, p, r, b):
     """solve the problem with the naive full bit search
 
@@ -18,7 +19,9 @@ def naive(n, m, p, r, b):
     for num in range(2 ** n):
         tmp_time = time.time()
         if tmp_time - start_time > 10.0:
-            return -1 # timeout
+            raise TimeoutError(
+                "A timeout occurs because a single test case took more than 10 seconds"
+            )
 
         choice = []
         check = [0] * m
