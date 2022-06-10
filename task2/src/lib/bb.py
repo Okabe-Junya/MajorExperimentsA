@@ -55,6 +55,7 @@ def check_subject(r, b, x):
 
 
 def branch_and_bound(n, m, p, r, b):
+    cnt = 0
     """solve the problem with the branch and bound algorithm
 
     Args:
@@ -67,16 +68,21 @@ def branch_and_bound(n, m, p, r, b):
     Returns:
         int: the maximum price under the restrictions
     """
-    r_init = r.copy()
+    pr = [p] + r
+    pr_T = [list(t) for t in zip(*pr)]
+    pr_T.sort()
+    pr = [list(t) for t in zip(*pr_T)]
+    p = pr.pop(0)
+    r_init = pr
     b_init = b.copy()
     DEBUG = True
 
     start_time = time.time()
-    tmp_opt = greedy(n, m, p, r, b.copy())
+    tmp_opt = greedy(n, m, p, r_init, b_init.copy())
     item_flag = [-1] * n
     ans_list = []
     part_prob = deque()
-    part_prob.append((n, m, p, r, b, item_flag))
+    part_prob.append((n, m, p, r_init, b_init, item_flag))
     while part_prob:
         tmp_time = time.time()
         if tmp_time - start_time > 10.0:
@@ -88,6 +94,8 @@ def branch_and_bound(n, m, p, r, b):
         if -1 not in tmp_prob[-1]:
             if check_subject(r_init, b_init, tmp_prob[-1]):
                 ans_list.append(tmp_prob[-1])
+                tmp_opt = max(tmp_opt, sum(p[i] * tmp_prob[-1][i] for i in range(n)))
+                # print(tmp_opt)
         if DEBUG:
             res = liner_with_solver(*tmp_prob[:-1])
             if res is None:
@@ -101,22 +109,12 @@ def branch_and_bound(n, m, p, r, b):
         if res + tmp_sum < tmp_opt:
             continue
         else:
-            tmp_opt = tmp_sum
             new_prob1, new_prob2 = make_subtree_problem(*tmp_prob)
             if not new_prob1[4] == -1:
                 part_prob.append(new_prob1)
             if not new_prob2[4] == -1:
                 part_prob.append(new_prob2)
-
-    opt = 0
-    for ans in ans_list:
-        tmp_sum = 0
-        for i in range(n):
-            if ans[i] == 1:
-                tmp_sum += p[i]
-        if tmp_sum > opt:
-            opt = tmp_sum
-    return opt
+    return tmp_opt
 
 
 def main():
