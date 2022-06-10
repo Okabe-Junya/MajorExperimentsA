@@ -2,5 +2,6 @@ make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/junyaokabe/Documents/大学/春/主専攻実験A/task2/src'
 cythonize -ib ./pyx/naive.pyx
 rm -f ./pyx/naive.c
+ 
 make: Leaving directory `/Users/junyaokabe/Documents/大学/春/主専攻実験A/task2/src'
  

@@ -1,8 +1,6 @@
 import sys
 import time
 
-import gurobipy as gp
-
 
 from lib.input import parse_input
 from lib.solver import solve
