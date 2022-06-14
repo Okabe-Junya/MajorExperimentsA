@@ -23,3 +23,8 @@ def greedy(n, m, p, r, b):
                 b[i] -= r[i][p_index]
             opt += p[p_index]
     return opt
+
+
+def greedy2(n, m, p, r, b, item_flag):
+    opt = 0
+    return opt
