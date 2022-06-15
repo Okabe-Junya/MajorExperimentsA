@@ -60,15 +60,15 @@ def branch_and_bound(n, m, p, r, b):
     item_flag = [-1] * n
     prob_queue = deque()
     prob_queue.append(item_flag)
-    # 分枝限定法（幅優先探索）
+    # 分枝限定法（深さ優先探索）
     while prob_queue: # 部分問題がキューにある間
         tmp_time = time.time()
-        if tmp_time - start_time > 100.0:
+        if tmp_time - start_time > 60.0:
             raise TimeoutError(
                 "A timeout occurs because a single test case took more than 60 seconds"
             )
 
-        tmp_prob = prob_queue.popleft() 
+        tmp_prob = prob_queue.pop() 
         if -1 not in tmp_prob: # 全てのitemが選択された場合
             if check_subject(r_init, b, tmp_prob):
                 tmp_opt = max(tmp_opt, sum(p[i] * tmp_prob[i] for i in range(n)))
