@@ -1,7 +1,4 @@
-import sys
 import time
-
-from input import parse_input
 
 
 def naive(n, m, p, r, b):
@@ -18,7 +15,14 @@ def naive(n, m, p, r, b):
         int: the maximum price under the restrictions
     """
     executable_solution = []
+    start_time = time.time()
     for num in range(2 ** n):
+        tmp_time = time.time()
+        if tmp_time - start_time > 10.0:
+            raise TimeoutError(
+                "A timeout occurs because a single test case took more than 10 seconds"
+            )
+
         choice = []
         check = [0] * m
         bin_num = str(bin(num)[2:]).zfill(n)
@@ -37,19 +41,3 @@ def naive(n, m, p, r, b):
         else:
             executable_solution.append(sum(choice))
     return max(executable_solution)
-
-
-def main():
-    fname = sys.argv[1]
-    n, m, opt, p, r, b = parse_input(fname)
-    time_start = time.time()
-    res = naive(n, m, p, r, b)
-    time_end = time.time()
-
-    assert res == opt
-    print("Minimum price:", res)
-    print("Time: {:.3f}sec".format(time_end - time_start))
-
-
-if __name__ == '__main__':
-    main()
