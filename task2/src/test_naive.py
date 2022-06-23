@@ -7,7 +7,7 @@ from pyx.naive import naive as naive_pyx
 
 
 def test():
-    for i in range(1, 8):
+    for i in range(1, 3):
         fname = 'test_case/case' + str(i) + '.txt'
         n, m, opt, p, r, b = parse_input(fname)
         res = naive(n, m, p, r, b)
