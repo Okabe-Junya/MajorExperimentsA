@@ -1,4 +1,4 @@
-\documentclass[a4j, dvipdfmx]{jsarticle}
+\documentclass[a4j, dvipdfmx, twocolumn]{jsarticle}
 
 \usepackage[dvipdfmx]{graphicx}
 \usepackage[dvipdfmx]{color}
@@ -40,14 +40,39 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-  
+  本課題では，Googleの検索アルゴリズムとして非常に有名なPageRankアルゴリズム\cite{ilprints422}の理論を理解し，これを用いた計算機実験を行った．実際に，航空ネットワークに関するダミーデータを作成し，PageRankアルゴリズムを用いて，各空港の重要度を計算した．さらに計算結果から，航空ネットワークが中央集権的である\footnote{一般的に，特定のいくつかの空港に路線が集中するようなネットワークを\emph{ハブアンドスポークシステム}という．一方で非中央集権的な，各空港間に直行便が運行しているシステムを\emph{ポイントトゥポイントシステム}という．}べきか否かを考察した．
 \end{abstract}
-\section{hogeとは}
-\subsection{}
-\section{定式化}
+
+\section{はじめに}
+\subsection{PageRankとは}
+PageRankとは，Googleの検索システムで用いられているアルゴリズムである．PageRankでは，Webページ間のハイパーリンク関係を用いて，各ページの重要度を計算する．これは，\emph{良いWebページは別の良いWebページからリンクされている}という考え方をもとに実現されている．Facts about Google and Competitionによると，
+\begin{quote}
+  PageRank works by counting the number and quality of links to a page to determine a rough estimate of how important the website is. The underlying assumption is that more important websites are likely to receive more links from other websites
+\end{quote}
+と確かに記載されている．またこの考え方は，論文の引用/被引用数ネットワークや共著ネットワークと非常に似ている．つまり良質な論文は，別な良質な論文からリンクされているという考え方である．実際にこの分野に関する研究として，Ma et al.\cite{ma2008bringing}，Ding et al.\cite{ding2009pagerank} などが挙げられる．
+
+\subsection{応用先}
+PageRankは，Webサイトの重要度付けの他にも，（ソーシャル）ネットワーク分析，物理学，化学，生物学など多数の応用先がある．ソーシャルネットワーク分析の事例としてはBahmani et al.\cite{bahmani2010fast}などが挙げられる．また，PageRankの応用に関する総説論文としてはGleich\cite{gleich2015pagerank}，Berkhin\cite{berkhin2005survey}が著名である．
+
+
+\subsection{アルゴリズム}
+ここでは，基本的なPageRankのアルゴリズムを紹介する．
+
+
+PageRankのより詳細な理論に関しては，Page et al.\cite{ilprints422}，Bianchini et al.\cite{bianchini2005inside}，Langville, Meyer\cite{langville2004deeper}などを参照されたい．
+
 \subsection{変数の定義}
+
 \subsection{最適化問題の定式化}
+
 \section{計算機実験}
+
 \section{考察}
+
 \section{まとめ}
+
+
+\bibliographystyle{unsrt}
+\bibliography{bib/ref}
+
 \end{document}

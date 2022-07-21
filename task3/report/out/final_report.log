@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.141592653-p4.0.0-220214-2.6 (utf8.euc) (TeX Live 2022) (preloaded format=platex 2022.4.14)  28 APR 2022 04:09
+This is e-pTeX, Version 3.141592653-p4.0.0-220214-2.6 (utf8.euc) (TeX Live 2022) (preloaded format=platex 2022.4.14)  22 JUL 2022 02:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -292,34 +292,83 @@ LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 7.68799pt on input line 41.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 5.76599pt on input line 41.
-LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 42.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 11.53198pt on input line 42.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 42.
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 42.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 42.
-LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 45.
+(Font)              scaled to size 6.72699pt on input line 43.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 45.
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 45.
+(Font)              scaled to size 4.805pt on input line 43.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 45.
+(Font)              scaled to size 9.60999pt on input line 43.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 43.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 4.805pt on input line 43.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 43.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 5.76599pt on input line 43.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 46.
+(Font)              scaled to size 7.68799pt on input line 43.
+LaTeX Font Info:    Font shape `JT1/gt/m/it' in size <8> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 43.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 7.68799pt on input line 43.
+LaTeX Font Info:    Font shape `JY1/gt/m/it' in size <8> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 43.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 7.68799pt on input line 43.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 47.
+LaTeX Font Info:    Font shape `JT1/gt/m/it' in size <10> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 48.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 48.
+LaTeX Font Info:    Font shape `JY1/gt/m/it' in size <10> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 48.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 48.
+(out/final_report.bbl
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 [1
+
+
+]
+Underfull \hbox (badness 1454) in paragraph at lines 10--13
+\OT1/cmr/m/n/10 Bring-ing pager-ank to the ci-ta-tion anal-y-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--24
+[]\OT1/cmr/m/n/10 Bahman Bah-mani, Ab-dur Chowd-hury,
+ []
+
+
+Underfull \hbox (badness 1077) in paragraph at lines 21--24
+\OT1/cmr/m/n/10 and Ashish Goel.  Fast in-cre-men-tal and
+ []
+
+
+Underfull \hbox (badness 5331) in paragraph at lines 21--24
+\OT1/cmr/m/n/10 per-son-al-ized pager-ank.  \OT1/cmr/m/it/10 arXiv preprint
+ []
+
+
+Underfull \hbox (badness 2913) in paragraph at lines 42--45
+\OT1/cmr/m/n/10 in-side pager-ank.  \OT1/cmr/m/it/10 In-ter-net Math-e-mat-ics\OT1/cmr/m/n/10 ,
+ []
+
+) [2
 
 ] (out/final_report.aux) ) 
 Here is how much of TeX's memory you used:
- 5758 strings out of 478724
- 91531 string characters out of 5858392
- 574669 words of memory out of 5000000
- 24135 multiletter control sequences out of 15000+600000
- 485165 words of font info for 99 fonts, out of 8000000 for 9000
+ 5795 strings out of 478724
+ 92001 string characters out of 5858392
+ 584657 words of memory out of 5000000
+ 24159 multiletter control sequences out of 15000+600000
+ 489506 words of font info for 116 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 67i,6n,77p,394b,267s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 67i,8n,77p,659b,301s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on out/final_report.dvi (1 page, 1268 bytes).
+Output written on out/final_report.dvi (2 pages, 7644 bytes).
