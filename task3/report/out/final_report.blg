@@ -1,0 +1,47 @@
+This is pBibTeX, Version 0.99d-j0.34 (TeX Live 2022)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: final_report.aux
+The style file: unsrt.bst
+Database file #1: bib/ref.bib
+You've used 9 entries,
+            1791 wiz_defined-function locations,
+            508 strings with 4893 characters,
+and the built_in function-call counts, 1997 in all, are:
+= -- 181
+> -- 85
+< -- 1
++ -- 32
+- -- 23
+* -- 150
+:= -- 330
+add.period$ -- 28
+call.type$ -- 9
+change.case$ -- 9
+chr.to.int$ -- 0
+cite$ -- 9
+duplicate$ -- 81
+empty$ -- 196
+format.name$ -- 23
+if$ -- 427
+int.to.chr$ -- 0
+int.to.str$ -- 9
+missing$ -- 8
+newline$ -- 49
+num.names$ -- 9
+pop$ -- 17
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 27
+stack$ -- 0
+substring$ -- 150
+swap$ -- 10
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 21
+width$ -- 10
+write$ -- 101
+is.kanji.str$ -- 0
