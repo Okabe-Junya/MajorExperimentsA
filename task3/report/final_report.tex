@@ -44,7 +44,7 @@
 \maketitle
 \begin{abstract}
   本課題では，Googleの検索アルゴリズムとして非常に有名なPageRankアルゴリズム\cite{ilprints361}\cite{ilprints422}の理論を理解し，これを用いた計算機実験を行った．実際に，日本国内の主要空港間の移動者数データに対してPageRankアルゴリズムを適用し，各空港の重要度を計算した．
-  % さらに計算結果から，航空ネットワークが中央集権的である\footnote{一般的に，特定のいくつかの空港に路線が集中するようなネットワークを\emph{ハブアンドスポークシステム}という．一方で非中央集権的な，各空港間に直行便が運行しているシステムを\emph{ポイントトゥポイントシステム}という．}べきか否かを考察した．
+  さらに計算結果から，航空ネットワークが中央集権的であるべきか否かを考察した．
 \end{abstract}
 ]
 
@@ -63,6 +63,7 @@ PageRankは，Webサイトの重要度付けの他にも，（ソーシャル）
 
 \section{PageRank}
 \subsection{定義}
+\label{sec:pagerank-definition}
 ここでは基本的な
 \footnote{Page et al.\cite{ilprints422}の論文に基づいた}
 PageRankのアルゴリズムを紹介する．
@@ -89,9 +90,11 @@ $R(v) / N_v$ は，$v$ のランクを $F_u$ の要素数，すなわち $v$ か
   \label{eq:R}
   R = cAR
 \end{equation}
-と表すことができる．これは $R$ が $A$ の固有ベクトルに他ならないことを示している．\footnote{さらにこのときの固有値は $c$ である．}
+と表すことができる．これは $R$ が $A$ の固有ベクトルに他ならないことを示している．またこのときの固有値は $c$ である．
 
-しかし式\eqref{eq:rank1}の定義には少し問題がある．ある2つのページ $u'$ と $v'$ が相互にリンクしており，なおかつ他のどのページともリンクしない状況を考えてみる．さらに，別のあるページが $u'$ あるいは $v'$ にリンクしているものとする．このとき，ランクをうまく配分することができない．そこで，式\eqref{eq:rank1}の定義を，あるベクトル $E(u)$ \footnote{$E(u)$ はWeb上のランクのソースに対応している} を用いて式\eqref{eq:rank2}に再度定義し直す．
+\subsection{定義の拡張}
+\label{sec:pagerank-definition-extension}
+\ref{sec:pagerank-definition}節の式\eqref{eq:rank1}の定義には少し問題がある．ある2つのページ $u'$ と $v'$ が相互にリンクしており，なおかつ他のどのページともリンクしない状況を考えてみる．さらに，別のあるページが $u'$ あるいは $v'$ にリンクしているものとする．このとき，ランクをうまく配分することができない．そこで，式\eqref{eq:rank1}の定義を，あるベクトル $E(u)$ \footnote{$E(u)$ はWeb上のランクのソースに対応している} を用いて式\eqref{eq:rank2}に再度定義し直す．
 \begin{equation}
   \label{eq:rank2}
   R'(u) = c \left( \sum_{v \in B_u} \frac{R'(v)}{N_v} + E(u)\right)
@@ -100,9 +103,10 @@ $R(v) / N_v$ は，$v$ のランクを $F_u$ の要素数，すなわち $v$ か
 \footnote{$||R'||_1$ は，$R'$ の $L_1$ 正規化ノルムを表す．}
 を満たすものとする．式\eqref{eq:rank2}は $cE(u)$ の項によって正則化されているため，前述したような問題が起きることはない．以後，この定義を用いて議論を進める．
 
-PageRankのより詳細な理論，およびその拡張に関しては，Page et al.\cite{ilprints422}，Bianchini et al.\cite{bianchini2005inside}，Langville, Meyer\cite{langville2004deeper}などを参照されたい．
+PageRankのより詳細な理論，およびその拡張に関しては，Page et al.\cite{ilprints422}，Bianchini et al.\cite{bianchini2005inside}，Langville, Meyer\cite{langville2004deeper}，Xing, Ghorbani\cite{xing2004weighted}などを参照されたい．
 
 \section{計算機実験}
+\subsection{データセット}
 本課題では e-stat
 \footnote{政府統計の総合窓口}
 \footnote{\url{https://www.e-stat.go.jp}}
@@ -110,13 +114,17 @@ PageRankのより詳細な理論，およびその拡張に関しては，Page e
 \footnote{東京国際（羽田），成田国際，新千歳，大阪国際（伊丹），関西国際，福岡，那覇の7空港}
 間の令和2年2月の月間移動者数の旅客数を用いた．このデータでは，各ODペアに対する月間の旅客移動数が記載されている．\footnote{ただし，羽田-成田間，伊丹-関西間のデータは見つからなかったため，0人として扱っている．}
 
-\section{結果}
+\subsection{PageRankの計算}
+本課題ではPythonのNetworkXライブラリを用いて，PageRankの計算を行った．実行環境に関しては\ref{sec:env}を参照されたい．
 
+\section{結果}
+\label{sec:result}
+実際に\secref{sec:pagerank-definition-extension}の定義に基づいてPageRankを計算した結果を\tabref{tab:pagerank}に示す．
 
 \begin{table}[htb]
     \begin{tabular}{cl}
       \hline
-      空港 & 重要度 \\
+      空港 & R \\
       \hline
       \hline
       羽田 & 0.295 \\
@@ -130,10 +138,16 @@ PageRankのより詳細な理論，およびその拡張に関しては，Page e
     \end{tabular}
   \centering
   \caption{各空港の重要度}
+  \label{tab:pagerank}
 \end{table}
 
-\section{考察}
+\tabref{tab:pagerank}の結果より，羽田空港が最も重要な空港であり，次点で福岡空港，さらに新千歳，那覇，伊丹，成田，関西と続いていることが読み取れる．
 
+\section{考察}
+\secref{sec:result}の結果をもとに考察を行う．
+\tabref{tab:pagerank}の結果の妥当性を検証するため，令和2年度の空港別旅客数のデータ
+\footnote{このデータもe-stat上から収集した．}
+を参照する．各空港の国内線の総旅客数を\tabref{tab:airport-passenger-number}に示す．
 \begin{table}[htb]
   \begin{tabular}{cl}
     \hline
@@ -149,15 +163,17 @@ PageRankのより詳細な理論，およびその拡張に関しては，Page e
     那覇 & 6,588,217 \\
     \hline
   \end{tabular}
-\centering
-\caption{令和2年度 年間旅客数（国内）}
+  \centering
+  \caption{令和2年度 年間旅客数（国内）}
+  \label{tab:airport-passenger-number}
 \end{table}
+ただし\tabref{tab:airport-passenger-number}の数値は\tabref{tab:pagerank}とは異なり，本課題で採用した主要7空港以外との旅客数も含まれていることに注意されたい．
 
-
+さらに，\tabref{tab:pagerank}，\tabref{tab:airport-passenger-number}を順位付けした結果を\tabref{tab:pagerank-airport-passenger-number}に示す．
 \begin{table}[htb]
   \begin{tabular}{cll}
     \hline
-    空港 & 重要度順位 & 旅客数順位 \\
+    空港 & Rの順位 & 旅客数順位 \\
     \hline
     \hline
     羽田 & 1 & 1 \\
@@ -169,14 +185,43 @@ PageRankのより詳細な理論，およびその拡張に関しては，Page e
     那覇 & 4 & 2 \\
     \hline
   \end{tabular}
-\centering
-\caption{}
+  \centering
+  \caption{Rの値と旅客数の順位の比較}
+  \label{tab:pagerank-airport-passenger-number}
 \end{table}
+\tabref{tab:pagerank-airport-passenger-number}より，Rの順位と旅客数の順位には，多少の差
+\footnote{確かに那覇を除くすべての空港で，Rの順位と旅客数の順位の差の絶対値は1以下である}
+こそあれど概ね同様の結果であると結論づけられる．すなわち，PageRankによる空港の重要度の評価は，旅客数の順位による評価と大きく差は生じないといえる．多少の順位差はあるものの，これは先述した通り\tabref{tab:airport-passenger-number}の数値に主要7空港以外との旅客数も含まれていることに起因しているのではないだろうか．
+
+また，本課題のデータ
+\footnote{ないしは日本国内のデータ}
+では，羽田が\emph{ハブ空港} のように機能している
+\footnote{一般的に，特定のいくつかの空港に路線が集中するようなネットワークを\emph{ハブアンドスポークシステム}といい，集中している空港を\emph{ハブ空港}という．一方で非中央集権的な，各空港間に直行便が運行しているシステムを\emph{ポイントトゥポイントシステム}という．}
+ため，羽田との旅客数の多い空港ほど順位が上がりやすい傾向にあった
+\footnote{実際に\tabref{tab:pagerank-airport-passenger-number}を確認すると，羽田との旅客数が最も多かった福岡のRの順位は2位，一方で羽田との旅客往来のない成田が6位，次点で少ない関西が7位となっていた．}
+といえる．
+これがポイントトゥポイントシステムである航空ネットワークのデータを用いると，
+各空港間のPageRankの値に差がつきにくくなると考えられる．
 
 \section{まとめ}
+本課題を通してPageRankアルゴリズムの理論の学習を行った．また，実際にPageRankアルゴリズムを航空ネットワークのデータに適用し，空港の重要度の計算を行った．計算結果は，各空港の総旅客数のデータを良く一致することができた．
 
+\section{今後の課題}
+本課題では大規模なデータは扱わず，非常に小規模なデータで計算を行った．例えば日本すべての空港，ないしは世界各地の空港へと拡張することを検討したい．
+
+またポイントトゥポイントシステムのデータに対する分析，ネットワークから特定の空港を削除したときのPageRankの値の変化の検討も興味深い．
 
 \bibliographystyle{unsrt}
 \bibliography{bib/ref}
 
+\appendix
+\section{実行環境}
+\label{sec:env}
+本課題を行った環境を以下に示す．
+\begin{itemize}
+\item 機種名: MacBookPro 
+\item チップ: Apple M1 Pro
+\item Python: 3.10.5
+\item networkx: 2.8.5
+\end{itemize}
 \end{document}

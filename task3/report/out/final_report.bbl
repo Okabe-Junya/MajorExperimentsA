@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{ilprints361}
 S.~Brin and L.~Page.
@@ -48,5 +48,11 @@ Monica Bianchini, Marco Gori, and Franco Scarselli.
 Amy~N Langville and Carl~D Meyer.
 \newblock Deeper inside pagerank.
 \newblock {\em Internet Mathematics}, 1(3):335--380, 2004.
+
+\bibitem{xing2004weighted}
+Wenpu Xing and Ali Ghorbani.
+\newblock Weighted pagerank algorithm.
+\newblock In {\em Proceedings. Second Annual Conference on Communication
+  Networks and Services Research, 2004.}, pages 305--314. IEEE, 2004.
 
 \end{thebibliography}
